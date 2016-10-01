@@ -1,0 +1,97 @@
+.shop-cart{
+    float: right;
+    margin: 0 1rem 0 1rem;
+}
+.login{
+    float: right;
+    margin: 0 1rem 0 1rem;
+}
+.detail{
+    position: relative;
+}
+.pic{
+    position: absolute;
+    left: 0;
+}
+.goods-detail{
+    margin-left: 450px;
+}
+.small-img{
+    text-align: center;
+}
+.small-img:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.small-img li{
+    display: inline-block;
+    margin-left: 1rem;
+    border: 1px solid red;
+}
+.goods-price_freight{
+    margin: 1rem auto 1rem 1rem;
+}
+.goods-price{
+    font-size: 3rem;
+}
+.goods-freight{
+    font-size: 2rem;
+}
+.sales-status-show{
+    text-align: left;
+    font-size: 1rem;
+}
+.sales-status-show li{
+    display: inline-block;
+    width: 8rem;
+    border: 1px solid red;
+    background-color: aqua;
+}
+/*.goods-spec{*/
+    /*position: relative;*/
+/*}*/
+.goods-spec-choice-div{
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 0.5rem auto 0.5rem auto;
+}
+.goods-spec-choice-div:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.goods-spec-choice{
+    float: left;
+    margin-right: 1rem;
+}
+.goods-spec-choice-div ul{
+    line-height: 2.5rem;
+    vertical-align: middle;
+}
+.goods-spec-choice-div li,.goods-spec-choice-div input{
+    font-size: 1.5rem;
+    background-color: aqua;
+    float: left;
+    margin-right: 1rem;
+    border: 1px solid red;
+}
+.goods-spec-choice-div input{
+    width: 5rem;
+}
+.buy-btn-div{
+    font-size: 2rem;
+}
+#buy-btn,#shop-cart-btn{
+    display: inline-block;
+    height: 3rem;
+    width: 12rem;
+    background-color: red;
+}
+.service-promise span{
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+.service-promise a{
+    margin-right: 0.5rem;
+}
