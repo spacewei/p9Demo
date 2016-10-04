@@ -1,11 +1,36 @@
 .shop-cart{
     float: right;
     margin: 0 1rem 0 1rem;
+    border: 1px solid red;
 }
 .login{
     float: right;
     margin: 0 1rem 0 1rem;
 }
+.login-div{
+    display: none;
+    z-index: 999;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: aqua;
+    border: 1px solid red;
+    width: 20rem;
+    height: 10rem;
+}
+.login-tr{
+    display: block;
+    margin: 1rem auto 1rem auto;
+    text-align: center;
+}
+.login-tr span{
+    display: inline-block;
+    width: 4rem;
+}
+/*.login-td{*/
+    /*display: table-cell;*/
+/*}*/
 .detail{
     position: relative;
 }

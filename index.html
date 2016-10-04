@@ -11,28 +11,38 @@
 <header class="header-shop center-all">
     <span class="sign"><img src="ICON"></span>
     <span class="shop-cart"><i></i>购物车<span class="shop-cart-number"></span></span>
+    <!--<span class="login">-->
+        <!--<label for="user-name">用户名<input id="user-name" type="text"></label>-->
+        <!--<label for="user-password">密码<input id="user-password" type="password"></label>-->
+        <!--<input id="login-btn" type="button" value="登录">-->
+    <!--</span>-->
+    <div class='login-div'>
+        <label class="login-tr" for='user-name'><span>用户名</span><input class="login-td" id='user-name' type='text'></label>
+        <label class="login-tr" for='user-password'><span>密码</span><input class="login-td" id='user-password' type='password'></label>
+        <span class="login-tr"><input id='login-btn' type='button' value='登录'></span>
+    </div>
     <span class="login">
-        <label for="user-name">用户名<input id="user-name" type="text"></label>
-        <label for="user-password">密码<input id="user-password" type="password"></label>
+        <input class="pleaseLogin" type="button" value="请登录">
+        <span class="login-show"></span>
     </span>
 </header>
 <div class="detail center-all">
     <div class="pic">
-        <div class="big-img"><img src="IMG/goods0_430x430.jpg"></div>
+        <div class="big-img"><img src="IMG/goods_430x430_0.jpg"></div>
         <ul class="small-img">
-            <li class=" small-img-selected">
+            <li id="small-img0" class="small-img0">
                 <img src="IMG/goods0_60x60.jpg">
             </li>
-            <li class="">
+            <li id="small-img1" class="small-img1">
                 <img src="IMG/goods1_60x60.jpg">
             </li>
-            <li class="">
+            <li id="small-img2" class="small-img2">
                 <img src="IMG/goods2_60x60.jpg">
             </li>
-            <li class="">
+            <li id="small-img3" class="small-img3">
                 <img src="IMG/goods3_60x60.jpg">
             </li>
-            <li class="">
+            <li id="small-img4" class="small-img4">
                 <img src="IMG/goods4_60x60.jpg">
             </li>
         </ul>
