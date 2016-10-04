@@ -23,10 +23,10 @@ function init() {
         //    userPassword:$('#user-password').val()
         //}
         var urlLogin = "login.php";
-        $.post(urlLogin,{userName:userName},function(data){
-            $(".login-show").html(data);
-            alert(data);
-        })
+        $.post(urlLogin,{userName:userName,userPWD:userPassword},function(data){
+            $(".login-show").text(data.user_name + ";" + data.password);
+            alert(data.user_name + ";" + data.password);
+        },"json")
     })
 }
 function test(){
