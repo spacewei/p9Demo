@@ -11,18 +11,17 @@
 <header class="header-shop center-all">
     <span class="sign"><img src="ICON"></span>
     <span class="shop-cart"><i></i>购物车<span class="shop-cart-number"></span></span>
-    <!--<span class="login">-->
-        <!--<label for="user-name">用户名<input id="user-name" type="text"></label>-->
-        <!--<label for="user-password">密码<input id="user-password" type="password"></label>-->
-        <!--<input id="login-btn" type="button" value="登录">-->
-    <!--</span>-->
     <div class='login-div'>
+        <div class="login-tr title-close"><canvas class="closeSymbol"></canvas></div>
+        <h2 class="login-tr">请登录</h2>
         <label class="login-tr" for='user-name'><span>用户名</span><input class="login-td" id='user-name' type='text'></label>
         <label class="login-tr" for='user-password'><span>密码</span><input class="login-td" id='user-password' type='password'></label>
-        <span class="login-tr"><input id='login-btn' type='button' value='登录'></span>
+        <label class="login-tr" for="validate-number"><span>验证码</span><img class="validate-show" src=""><input id="validate-refresh" type="button" value="刷新"><input id="validate-number" type="text"></label>
+        <span class="login-tr"><input id='login-btn' type='button' value='登录'><label for="save-login" class="save-login-label"><input id="save-login" type="checkbox">1小时内登录有效</label></span>
     </div>
     <span class="login">
         <input class="pleaseLogin" type="button" value="请登录">
+        <input class="login-off" type="button" value="退出登录">
         <span class="login-show"></span>
     </span>
 </header>

@@ -1,0 +1,60 @@
+.cart-header{
+    position: relative;
+    text-align: center;
+}
+.back-index{
+    position: absolute;
+    left: 1rem;
+    top: 0;
+}
+.goods-total{
+}
+.login{
+    position: absolute;
+    right: 1rem;
+    top: 0;
+}
+/*表格样式*/
+.cart-table{
+    display: table;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.cart-tr{
+    display: table-row;
+    height: 5rem;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.cart-td{
+    display: table-cell;
+}
+.cart-tr:before{
+    content: "";
+    display: block;
+    border: 2px solid blue;
+    height: 0;
+    width: 70rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+}
+.cart-tr:after{
+    content: "";
+    display: block;
+    border: 2px solid blue;
+    height: 0;
+    width: 70rem;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+}
+/*表格标题*/
+.table-title{
+    text-align: center;
+}
+.table-cell-title{
+    vertical-align: middle;
+    border: 1px solid red;
+}
