@@ -1,9 +1,7 @@
 /**
  * Created by SPACEY on 2016/9/28.
  */
-function init() {
-    //图片切换函数
-    switchImg();
+function controllerInit() {
     /*绑定弹出登录框(表格)事件,后"请登录"消失*/
     $('.pleaseLogin').on('click',function(){
         $('.login-div').show().css({'display':'table'});
@@ -33,11 +31,15 @@ function init() {
     $('#login-btn').on('click',function(){
         loginSubmit();
     });
+    /*绑定商品规格选择函数*/
+    $('.spec-radio').on('click',function(event){
+        specChock();
+    });
     //加载页面后,提交检查是否维持登录函数
     loginUserReady();
 }
 /*用canvas画出登录框的关闭按键*/
-function mycanvas(){
+function myCanvas(){
     var closeSymbolDOM = $('.closeSymbol').get(0);
     closeSymbolDOM.width = '30';
     closeSymbolDOM.height = '30';
@@ -118,9 +120,32 @@ function loginUserReady(){
         }
     },'json');
 }
+/*商品规格选择后发送规格挑选显示商品信息的函数*/
+function specChock(){
+    $('.spec-radio').parent().removeClass('selected');
+    $('.spec-radio:checked').parent().addClass('selected');
+    var specData = {
+        'specNetwork': $('.spec-network:checked').val(),
+        'specColor' : $('.spec-color:checked').val(),
+        'specPackage' : $('.spec-package:checked').val(),
+        'specStorage' : $('.spec-storage:checked').val()
+    };
+    //alert(specData.specColor+specData.specNetwork+specData.specPackage+specData.specStorage);
+    $.post('loginStore.php',specData,function(data){
+        alert('data.goodsName');
+    },'json')
+}
+/*加载后初始化动态页面*/
+function viewInit(){
+    //图片切换函数
+    switchImg();
+    //绘制登录框的退出按键
+    myCanvas();
+}
 
 $(document).ready(function(){
-    init();
-    mycanvas();
+    viewInit();
+    controllerInit();
+
 
 });

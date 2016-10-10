@@ -148,6 +148,26 @@
     width: 12rem;
     background-color: red;
 }
+/*全部用label代替商品规格选择div*/
+.goods-spec-choice-div input{
+    display: none;
+}
+.goods-spec-choice-div label{
+    font-size: 1.5rem;
+    background-color: aqua;
+    margin-right: 0.5rem;
+    border: 1px solid red;
+}
+/*.goods-spec-choice-div label:hover{*/
+    /*background-color: red;*/
+/*}*/
+/*.spec-color-amberAsh:checked{*/
+    /*color: red;*/
+/*}*/
+.selected{
+    color: red;
+}
+
 .service-promise span{
     font-size: 1.5rem;
     margin-right: 1.5rem;
