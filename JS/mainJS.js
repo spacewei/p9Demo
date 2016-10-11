@@ -1,7 +1,19 @@
 /**
  * Created by SPACEY on 2016/9/28.
  */
+/*加载后初始化动态页面*/
+function viewInit(){
+    //初始化图片切换
+    switchImg();
+    //绘制登录框的退出按键
+    myCanvas();
+    //初始化显示默认选择的商品信息
+    specInit();
+}
+/*初始化控制事件*/
 function controllerInit() {
+    //加载页面后,提交检查是否维持了登录
+    loginUserReady();
     /*绑定弹出登录框(表格)事件,后"请登录"消失*/
     $('.pleaseLogin').on('click',function(){
         $('.login-div').show().css({'display':'table'});
@@ -31,14 +43,12 @@ function controllerInit() {
     $('#login-btn').on('click',function(){
         loginSubmit();
     });
-    /*绑定商品规格选择函数*/
+    /*绑定商品规格选择事件*/
     $('.spec-radio').on('click',function(event){
         specChock();
     });
-    //加载页面后,提交检查是否维持登录函数
-    loginUserReady();
 }
-/*用canvas画出登录框的关闭按键*/
+/*用canvas画出登录框的关闭按键函数*/
 function myCanvas(){
     var closeSymbolDOM = $('.closeSymbol').get(0);
     closeSymbolDOM.width = '30';
@@ -105,8 +115,9 @@ function loginSubmit(){
         }
     },"json");
 }
-/*加载页面后,提交检查是否维持登录函数*/
+/*加载页面后,检查是否维持登录函数*/
 function loginUserReady(){
+    //加载页面后,提交检查是否维持登录函数
     $.post('loginStore.php',{ready:'ok'},function(data){
         if(data.flag == 'keepUser'){
             $('.login-show').text('继续欢迎' + data.user_name);
@@ -115,37 +126,50 @@ function loginUserReady(){
             alert(data.user_name);
         }
         if(data.flag == 'keepNone'){
-            //$('.login-show').text('之前没有保存用户');
             alert(data.flag);
         }
     },'json');
+}
+/*初始化页面后,显示默认选择的商品信息*/
+function specInit(){
+    //初始化变色默认选择商品,并显示该商品信息
+    $('.spec-radio:checked').parent().addClass('selected');
+    var specData = getSpec();
+    $.extend(specData,{"ready":"ok"});
+        $.post('goodsShow.php',specData,function(data){
+            showSpec(data);
+        },'json')
 }
 /*商品规格选择后发送规格挑选显示商品信息的函数*/
 function specChock(){
     $('.spec-radio').parent().removeClass('selected');
     $('.spec-radio:checked').parent().addClass('selected');
-    var specData = {
-        'specNetwork': $('.spec-network:checked').val(),
-        'specColor' : $('.spec-color:checked').val(),
-        'specPackage' : $('.spec-package:checked').val(),
-        'specStorage' : $('.spec-storage:checked').val()
-    };
-    //alert(specData.specColor+specData.specNetwork+specData.specPackage+specData.specStorage);
-    $.post('loginStore.php',specData,function(data){
-        alert('data.goodsName');
+    var specData = getSpec();
+    $.extend(specData,{"specFlag":"ok"});
+    $.post('goodsShow.php',specData,function(data){
+        showSpec(data);
     },'json')
 }
-/*加载后初始化动态页面*/
-function viewInit(){
-    //图片切换函数
-    switchImg();
-    //绘制登录框的退出按键
-    myCanvas();
+/*取得选择的商品规格函数*/
+function getSpec(){
+    var getSpecData = {
+        specNetwork: $('.spec-network:checked').val(),
+        specColor : $('.spec-color:checked').val(),
+        specPackage : $('.spec-package:checked').val(),
+        specStorage : $('.spec-storage:checked').val()
+    };
+    return getSpecData;
+}
+/*由得到的MySQL数据显示在html上*/
+function showSpec(data){
+    $('.goods-price').text(data.price);
+    $('.sales-show').text(data.monthlySales);
+    $('.evaluation-show').text(data.evaluate);
+    $('.stock-show').text(data.stock);
 }
 
 $(document).ready(function(){
     viewInit();
     controllerInit();
-
 
 });
