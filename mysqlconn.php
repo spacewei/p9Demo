@@ -64,3 +64,21 @@ function userMysql($userName){
     //返回结果
     return $result;
 }
+
+/*讲选中的商品信息从商品数据库复制到购物车数据库*/
+function shopCartMysql($goodsID,$goodsNumber){
+    $mysqli = initMysql();
+
+    //执行数据库语句
+    //注意,要先插入,再update,不能一起拼成字符串同时运行!!!
+    $queryStr0 = "insert into shop_cart_record(goodsID,goodsName,price,stock,monthlySales,evaluate,img0,img1,img2,img3,img4,spec0,spec1,spec2,spec3,specialPrice) select * from goods_record where goodsID =".$goodsID.";";
+    $mysqli->query($queryStr0);
+    $queryStr1 = "update shop_cart_record set goodsNumber =".$goodsNumber." where goodsID =".$goodsID.";";
+    $result = $mysqli->query($queryStr1);
+
+    //关闭数据库连接
+    $mysqli->close();
+
+    //返回结果
+//    return $result;
+}

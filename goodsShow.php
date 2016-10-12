@@ -5,6 +5,8 @@
  * Date: 2016/10/11
  * Time: 22:53
  */
+session_start();
+ob_clean();
 header("Content-Type:application/json;charset=utf-8");
 
 include 'mysqlconn.php';
@@ -16,7 +18,12 @@ if(isset($_POST['specFlag']) || isset($_POST['ready'])){
     $specColor = "'".$_POST['specColor']."'";
     $specPackage = "'".$_POST['specPackage']."'";
     $specStorage = "'".$_POST['specStorage']."'";
+
+    //执行数据库操作
     $result = goodsMysql($specNetwork,$specColor,$specPackage,$specStorage);
+
+    //将选择的商品的ID计入session变量
+    $_SESSION['currentGoodsID'] = $result['goodsID'];
 
     //转换成json格式输出
     $resultJson = json_encode($result);

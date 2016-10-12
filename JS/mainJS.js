@@ -44,9 +44,14 @@ function controllerInit() {
         loginSubmit();
     });
     /*绑定商品规格选择事件*/
-    $('.spec-radio').on('click',function(event){
+    $('.spec-radio').on('click',function(){
         specChock();
     });
+    /*绑定加入购物车事件*/
+    $('#shop-cart-btn').on('click',function(){
+        var goodsNumber = $('#number-input').val();
+        $.post('shopCart.php',{pushShopCart:true,goodsNumber:goodsNumber})
+    })
 }
 /*用canvas画出登录框的关闭按键函数*/
 function myCanvas(){
@@ -142,13 +147,13 @@ function specInit(){
 }
 /*商品规格选择后发送规格挑选显示商品信息的函数*/
 function specChock(){
-    $('.spec-radio').parent().removeClass('selected');
-    $('.spec-radio:checked').parent().addClass('selected');
-    var specData = getSpec();
-    $.extend(specData,{"specFlag":"ok"});
-    $.post('goodsShow.php',specData,function(data){
-        showSpec(data);
-    },'json')
+        $('.spec-radio').parent().removeClass('selected');
+        $('.spec-radio:checked').parent().addClass('selected');
+        var specData = getSpec();
+        $.extend(specData,{"specFlag":"ok"});
+        $.post('goodsShow.php',specData,function(data){
+            showSpec(data);
+        },'json')
 }
 /*取得选择的商品规格函数*/
 function getSpec(){

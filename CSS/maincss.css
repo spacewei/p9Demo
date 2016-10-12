@@ -158,14 +158,11 @@
     margin-right: 0.5rem;
     border: 1px solid red;
 }
-/*.goods-spec-choice-div label:hover{*/
-    /*background-color: red;*/
-/*}*/
-/*.spec-color-amberAsh:checked{*/
-    /*color: red;*/
-/*}*/
 .selected{
     color: red;
+}
+#number-input{
+    display: inline-block;
 }
 
 .service-promise span{
