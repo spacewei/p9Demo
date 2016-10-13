@@ -82,3 +82,22 @@ function shopCartMysql($goodsID,$goodsNumber){
     //返回结果
 //    return $result;
 }
+
+/*购物车页面初始化(显示其中商品信息)函数*/
+function initShopCart(){
+    $mysqli = initMysql();
+
+    $queryStr ="select * from shop_cart_record;";
+
+    $resultArray = $mysqli->query($queryStr);
+
+    $array =array();
+
+    while($result=$resultArray->fetch_assoc()){
+        $array = array_merge_recursive($array,$result);
+    }
+    $arrayJson = json_encode($array);
+    return $arrayJson;
+}
+
+?>
