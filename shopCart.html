@@ -10,16 +10,19 @@
 <body>
 <header class="cart-header center-all">
     <span class="back-index">返回首页</span>
-    <span class="goods-total">商品总数</span>
+    <span class="goods-total">商品总数:</span>
     <span class="login">
         <span class="login-show"></span>
         <span class="login-please">请登录</span>
         <span class="login-off">退出登录</span>
     </span>
 </header>
-<div class="cart-table center-all">
+<div id="table-all" class="cart-table center-all">
     <div class="cart-tr table-title">
-        <span class="cart-td is-check table-cell-title">全选</span>
+        <span class="cart-td is-check table-cell-title">
+            <label class="check-goods" for="check-all">全选</label>
+            <input id="check-all" type="checkbox">
+        </span>
         <span class="cart-td goods-img table-cell-title">图片</span>
         <span class="cart-td goods-detail table-cell-title">商品名称</span>
         <span class="cart-td price table-cell-title">单价</span>
@@ -29,6 +32,7 @@
     </div>
 </div>
 <div id="test" class="cart-table center-all"></div>
+<button id="buy-btn">购买</button>
 <script src="JS/shopCart.js"></script>
 </body>
 </html>

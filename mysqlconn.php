@@ -66,21 +66,21 @@ function userMysql($userName){
 }
 
 /*讲选中的商品信息从商品数据库复制到购物车数据库*/
-function shopCartMysql($goodsID,$goodsNumber){
+function shopCartMysql($goodsID,$goodsNumber,$userName){
     $mysqli = initMysql();
 
     //执行数据库语句
     //注意,要先插入,再update,不能一起拼成字符串同时运行!!!
     $queryStr0 = "insert into shop_cart_record(goodsID,goodsName,price,stock,monthlySales,evaluate,img0,img1,img2,img3,img4,spec0,spec1,spec2,spec3,specialPrice) select * from goods_record where goodsID =".$goodsID.";";
     $mysqli->query($queryStr0);
-    $queryStr1 = "update shop_cart_record set goodsNumber =".$goodsNumber." where goodsID =".$goodsID.";";
+    $queryStr1 = "update shop_cart_record set goodsNumber =".$goodsNumber.",userName ='".$userName."' where goodsID =".$goodsID.";";
     $result = $mysqli->query($queryStr1);
 
     //关闭数据库连接
     $mysqli->close();
 
     //返回结果
-//    return $result;
+    return $result;
 }
 
 /*购物车页面初始化(显示其中商品信息)函数*/
@@ -89,15 +89,25 @@ function initShopCart(){
 
     $queryStr ="select * from shop_cart_record;";
 
-    $resultArray = $mysqli->query($queryStr);
+    $resultQuery = $mysqli->query($queryStr);
 
     $array =array();
 
-    while($result=$resultArray->fetch_assoc()){
-        $array = array_merge_recursive($array,$result);
+    while($resultArray=$resultQuery->fetch_assoc()){
+        $resultJson = json_encode($resultArray);
+        array_push($array,$resultJson);
     }
     $arrayJson = json_encode($array);
     return $arrayJson;
+}
+
+/*点击删除,删除一项商品*/
+function deleteThisGoods($thisGoodsID,$loginUser){
+    $mysqli = initMysql();
+
+    $queryStr ="delete from shop_cart_record where goodsID =".$thisGoodsID." and userName ='".$loginUser."';";
+
+    $mysqli->query($queryStr);
 }
 
 ?>

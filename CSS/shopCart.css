@@ -30,31 +30,43 @@
 .cart-td{
     display: table-cell;
 }
-.cart-tr:before{
-    content: "";
-    display: block;
-    border: 2px solid blue;
-    height: 0;
-    width: 70rem;
-    position: absolute;
-    top: -0.5rem;
-    left: 0;
-}
-.cart-tr:after{
-    content: "";
-    display: block;
-    border: 2px solid blue;
-    height: 0;
-    width: 70rem;
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-}
+/*.cart-tr:before{*/
+    /*content: "";*/
+    /*display: block;*/
+    /*border: 2px solid blue;*/
+    /*height: 0;*/
+    /*width: 70rem;*/
+    /*position: absolute;*/
+    /*top: -0.5rem;*/
+    /*left: 0;*/
+/*}*/
+/*.cart-tr:after{*/
+    /*content: "";*/
+    /*display: block;*/
+    /*border: 2px solid blue;*/
+    /*height: 0;*/
+    /*width: 70rem;*/
+    /*position: absolute;*/
+    /*bottom: -0.5rem;*/
+    /*left: 0;*/
+/*}*/
 /*表格标题*/
 .table-title{
     text-align: center;
 }
+.check-goods{
+    display: inline-block;
+    vertical-align: top;
+}
+#check-all{
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
 .table-cell-title{
     vertical-align: middle;
     border: 1px solid red;
+}
+#buy-btn{
+    display: block;
+    margin: 2rem auto;
 }

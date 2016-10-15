@@ -50,7 +50,11 @@ function controllerInit() {
     /*绑定加入购物车事件*/
     $('#shop-cart-btn').on('click',function(){
         var goodsNumber = $('#number-input').val();
-        $.post('shopCart.php',{pushShopCart:true,goodsNumber:goodsNumber})
+        $.post('shopCart.php',{shopCartFlag:"pushShopCart",goodsNumber:goodsNumber},function(data){
+            if(data.result == 'fail'){
+                alert('请登录');
+            }
+        })
     })
 }
 /*用canvas画出登录框的关闭按键函数*/
