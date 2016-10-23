@@ -14,10 +14,10 @@ include 'mysqlconn.php';
 /*页面初始化,调用默认的页面商品信息*/
 /*接收商品规格选择变化,显示对应商品信息显示*/
 if(isset($_POST['specFlag']) || isset($_POST['ready'])){
-    $specNetwork = "'".$_POST['specNetwork']."'";
-    $specColor = "'".$_POST['specColor']."'";
-    $specPackage = "'".$_POST['specPackage']."'";
-    $specStorage = "'".$_POST['specStorage']."'";
+    $specNetwork = addslashes($_POST['specNetwork']);
+    $specColor = addslashes($_POST['specColor']);
+    $specPackage = addslashes($_POST['specPackage']);
+    $specStorage = addslashes($_POST['specStorage']);
 
     //执行数据库操作
     $result = goodsMysql($specNetwork,$specColor,$specPackage,$specStorage);

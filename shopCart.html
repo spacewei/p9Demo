@@ -11,10 +11,18 @@
 <header class="cart-header center-all">
     <span class="back-index">返回首页</span>
     <span class="goods-total">商品总数:</span>
+    <div class='login-div'>
+        <div class="login-tr title-close"><canvas class="closeSymbol"></canvas></div>
+        <h2 class="login-tr">请登录</h2>
+        <label class="login-tr" for='user-name'><span>用户名</span><input class="login-td" id='user-name' type='text'></label>
+        <label class="login-tr" for='user-password'><span>密码</span><input class="login-td" id='user-password' type='password'></label>
+        <label class="login-tr" for="validate-number"><span>验证码</span><img class="validate-show" src=""><input id="validate-refresh" type="button" value="刷新"><input id="validate-number" type="text"></label>
+        <span class="login-tr"><input id='login-btn' type='button' value='登录'><label for="save-login" class="save-login-label"><input id="save-login" type="checkbox">保持登录</label></span>
+    </div>
     <span class="login">
+        <input class="login-please" type="button" value="请登录">
+        <input class="login-off" type="button" value="退出登录">
         <span class="login-show"></span>
-        <span class="login-please">请登录</span>
-        <span class="login-off">退出登录</span>
     </span>
 </header>
 <div id="table-all" class="cart-table center-all">
@@ -34,5 +42,6 @@
 <div id="test" class="cart-table center-all"></div>
 <button id="buy-btn">购买</button>
 <script src="JS/shopCart.js"></script>
+<script src="JS/remake.js"></script>
 </body>
 </html>
