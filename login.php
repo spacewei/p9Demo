@@ -14,14 +14,6 @@ $result = userMysql($userName);
 //定义返回的字符串
 $x =array();
 
-//接收是否要保持登录状态
-if($_POST['saveLogin'] == 'true'){
-    $_SESSION['saveLogin'] = 'true';
-}else{
-    unset($_SESSION['saveLogin']);
-    unset($_SESSION['loginUser']);
-}
-
 //先判断验证码是否正确
 if($validate == $_SESSION['validate']){
     //再判断是否有此用户
@@ -30,9 +22,10 @@ if($validate == $_SESSION['validate']){
         if(md5($result['password']) != false && $userPWD != false && md5($result['password']) == $userPWD){
             $result['password'] = md5($result['password']);
             $x = array_merge($result,array('flag'=>'true'));
-            //假如选择了保持登录
+            $_SESSION['loginUser'] = $result['userName'];
+            //假如选择了保持登录3600s
             if($_POST['saveLogin'] == 'true'){
-                $_SESSION['saveLogin'] = 'true';
+                session_set_cookie_params(3600);
                 $_SESSION['loginUser'] = $result['userName'];
             }
         }else{
