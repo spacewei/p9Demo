@@ -15,21 +15,60 @@
     top: 0;
 }
 /*表格样式*/
-.cart-table{
-    display: table;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/*只让chrome显示样式*/
+@media all and (min-width: 0){
+    .cart-table{
+        display: flex;
+        flex-direction: column;
+        width: 70rem;
+    }
+    .cart-tr{
+        display: flex;
+        margin: 1rem auto;
+        justify-content: space-around;
+        /*align-items: stretch;*/
+    }
+    .is-check{
+        flex: 1 0 4rem;
+    }
+    .goods-img{
+        flex: 2 0 8rem;
+    }
+    .goods-detail{
+        flex: 3 0 12rem;
+    }
+    .price{
+        flex: 2 0 6rem;
+    }
+    .number{
+        flex: 1 0 4rem;
+    }
+    .total-class{
+        flex: 2 0 8rem;
+    }
+    .handle{
+        flex: 1 0 4rem;
+    }
 }
-.cart-tr{
-    display: table-row;
-    height: 5rem;
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/*只让火狐显示样式*/
+@-moz-document url-prefix(){
+    .cart-table{
+        display: table;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .cart-tr{
+        display: table-row;
+        height: 5rem;
+        position: relative;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .cart-td{
+        display: table-cell;
+    }
 }
-.cart-td{
-    display: table-cell;
-}
+/**/
 /*.cart-tr:before{*/
     /*content: "";*/
     /*display: block;*/
@@ -54,12 +93,14 @@
 .table-title{
     text-align: center;
 }
+.check-this{
+    vertical-align: middle;
+}
 .check-goods{
     display: inline-block;
     vertical-align: top;
 }
 #check-all{
-    margin-left: 0.5rem;
     vertical-align: middle;
 }
 .table-cell-title{

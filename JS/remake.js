@@ -15,7 +15,7 @@ var remake = {
         });
         /*绑定取消登录事件,清空登录情况界面,"退出登录"消失,"请登录"再现*/
         $('.login-off').on('click',function(){
-            $.post('loginStore.php',{loginOff:'off'},function(data){
+            $.post('login.php',{loginFlag:'loginOff'},function(data){
                 $('.login-show').text('');
                 $('.login-off').hide();
                 $('.login-please').show();
@@ -75,7 +75,7 @@ var remake = {
         var validate = $('#validate-number').val();
         var saveLogin = $('#save-login').get(0).checked;
         var urlLogin = "login.php";
-        $.post(urlLogin,{userName:userName,userPWD:userPassword,validate:validate,saveLogin:saveLogin},function(data){
+        $.post(urlLogin,{loginFlag:"loginIn",userName:userName,userPWD:userPassword,validate:validate,saveLogin:saveLogin},function(data){
             switch (data.flag) {
                 case 'none' :
                     $('.login-show').text('无此用户');
@@ -102,7 +102,7 @@ var remake = {
     /*加载页面后,检查是否维持登录函数*/
     loginUserReady:function(){
         //加载页面后,提交检查是否维持登录函数
-        $.post('loginStore.php',{ready:'ok'},function(data){
+        $.post('login.php',{loginFlag:'ready'},function(data){
             if(data.flag == 'keepUser'){
                 $('.login-show').text('继续欢迎' + data.user_name);
                 $('.login-off').show();

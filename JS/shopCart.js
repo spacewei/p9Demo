@@ -24,13 +24,13 @@ var shopCart = {
                 numberAll = parseInt(numberAll) + parseInt(dataObj.goodsNumber);
                 $('#table-all').get(0).innerHTML +=
                     "<div class='cart-tr table-title' id='" + dataObj.goodsID + "-goodsID" + "'>" +
-                    "<span class='cart-td is-check table-cell-title'><input class='check-this' type='checkbox'></span>" +
-                    "<span class='cart-td goods-img table-cell-title'>图片</span>" +
-                    "<span class='cart-td goods-detail table-cell-title'>" + dataObj.goodsName + "</span>" +
-                    "<span class='cart-td price table-cell-title'>" + dataObj.price + "</span>" +
-                    "<span class='cart-td number table-cell-title'>" + dataObj.goodsNumber + "</span>" +
-                    "<span class='cart-td total-class table-cell-title'>" + rowTotal.toFixed(2) + "</span>" +
-                    "<span class='cart-td handle table-cell-title'><button class='delete-this-goods'>删除商品</span>" +
+                        "<span class='cart-td is-check table-cell-title'><input class='check-this' type='checkbox'></span>" +
+                        "<span class='cart-td goods-img table-cell-title'>图片</span>" +
+                        "<span class='cart-td goods-detail table-cell-title'>" + dataObj.goodsName + "</span>" +
+                        "<span class='cart-td price table-cell-title'>" + dataObj.price + "</span>" +
+                        "<span class='cart-td number table-cell-title'>" + dataObj.goodsNumber + "</span>" +
+                        "<span class='cart-td total-class table-cell-title'>" + rowTotal.toFixed(2) + "</span>" +
+                        "<span class='cart-td handle table-cell-title'><button class='delete-this-goods'>删除商品</span>" +
                     "</div>";
             }
             //显示商品总数
@@ -101,10 +101,14 @@ var shopCart = {
                 $('.check-this').prop('checked',false);
             }
         })
+    },
+    /*判断使用的浏览器*/
+    queryBrowser: function () {
+        //alert(navigator.userAgent.indexOf('Firefox'));
     }
 };
 
 $(document).ready(function(){
     shopCart.initShopCart();
-
+    shopCart.queryBrowser();
 });
