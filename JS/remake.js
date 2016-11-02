@@ -1,11 +1,11 @@
 /**
  * Created by SPACEY on 2016/10/23.
  */
-var remake = {
+var remake = (function(){
     /*公共控制函数*/
-    controllerCommon:function(){
+    var controllerCommon = function(){
         //加载页面后,提交检查是否维持了登录
-        remake.loginUserReady();
+        loginUserReady();
         /*绑定弹出登录框(表格)事件,后"请登录"消失*/
         $('.login-please').on('click',function(){
             $('.login-div').show().css({'display':'table'});
@@ -34,16 +34,16 @@ var remake = {
         });
         /*绑定提交登录信息事件*/
         $('#login-btn').on('click',function(){
-            remake.loginSubmit();
+            loginSubmit();
         });
-    },
+    };
     /*公共视图函数*/
-    viewCommon:function(){
+    var viewCommon = function(){
         //绘制登录框的退出按键
-        remake.myCanvas();
-    },
+        myCanvas();
+    };
     /*用canvas画出登录框的关闭按键函数*/
-    myCanvas:function(){
+    var myCanvas = function(){
         //建立canvas对象
         var closeSymbolDOM = $('.closeSymbol').get(0);
         closeSymbolDOM.width = '30';
@@ -67,9 +67,9 @@ var remake = {
         closeSymbol.strokeStyle = 'red';
         closeSymbol.stroke();
         closeSymbol.closePath();
-    },
+    };
     /*提交登录信息函数*/
-    loginSubmit:function(){
+    var loginSubmit = function(){
         var userName = $('#user-name').val();
         var userPassword = $('#user-password').val();
         var validate = $('#validate-number').val();
@@ -94,13 +94,13 @@ var remake = {
                     $('.login-please').hide();
                     $('.login-off').show();
                     $('.shop-cart').show();
-                    //shopCart.initShopCart();
+
                     break;
             }
         },"json");
-    },
+    };
     /*加载页面后,检查是否维持登录函数*/
-    loginUserReady:function(){
+    var loginUserReady = function(){
         //加载页面后,提交检查是否维持登录函数
         $.post('login.php',{loginFlag:'ready'},function(data){
             if(data.flag == 'keepUser'){
@@ -114,10 +114,11 @@ var remake = {
                 alert(data.flag);
             }
         },'json');
-    }
-};
+    };
 
-$(document).ready(function(){
-    remake.controllerCommon();
-    remake.viewCommon();
-})
+
+    $(document).ready(function(){
+        controllerCommon();
+        viewCommon();
+    });
+})();
